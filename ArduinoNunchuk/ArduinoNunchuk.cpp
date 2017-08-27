@@ -18,6 +18,7 @@
 
 #define ADDRESS 0x52
 
+
 void ArduinoNunchuk::init()
 {
   Wire.begin();
@@ -27,6 +28,18 @@ void ArduinoNunchuk::init()
 
   ArduinoNunchuk::update();
 }
+
+void ArduinoNunchuk::init(int a , int b)
+{
+
+  Wire.begin(a,b);
+
+  ArduinoNunchuk::_sendByte(0x55, 0xF0);
+  ArduinoNunchuk::_sendByte(0x00, 0xFB);
+
+  ArduinoNunchuk::update();
+}
+
 
 void ArduinoNunchuk::update()
 {
